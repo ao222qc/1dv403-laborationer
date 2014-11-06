@@ -4,12 +4,44 @@ window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
+		// Plats för förändring.
+		
+		if (str === "")
+		{
+			throw new Error("Ange något!")
+		}
+		
+	  var minarray = [];
+	  minarray = str.split("");
+	  
+	  for (var i = 0; i < str.length; i++) 
+	  {
+	  	if (minarray[i] === minarray[i].toUpperCase())
+	  	{
+	  		minarray[i] = minarray[i].toLowerCase();
+	  	}
+	  	else
+	  	{
+	  		minarray[i] = minarray[i].toUpperCase();
+	  	}
+	  }
+		
+
+		
+		str = minarray.toString();
+		str = str.split(/,/).join("");
+		str = str.split(/[aA]/).join("#");
+		return str;
+		
+		
+		
+		
+		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-
-
+		
+		
 
 
 
