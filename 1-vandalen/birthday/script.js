@@ -5,8 +5,38 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
+	var nowDate = new Date();	
+	
+	date = date.split("-").join(",");
+	
+	var userDate = new Date(date);
+	
+	var difference = nowDate.getTime() - userDate.getTime();
+	
+	console.log(difference);
+	
+	var dayDifference = (difference / (1000*60*60*24));  
+		
+	if (dayDifference < 0)
+	{
+		dayDifference = Math.floor(dayDifference);
+		return Math.abs(dayDifference);
+	}
+	if (dayDifference > 1)
+	{
+		dayDifference -= 365;
+		dayDifference = Math.floor(dayDifference);
+		return Math.abs(dayDifference);
+	}
+	else
+	{
+		return Math.floor(dayDifference);
+	}
+	
 
+	
 
+	
 			// Din kod här.
 
 

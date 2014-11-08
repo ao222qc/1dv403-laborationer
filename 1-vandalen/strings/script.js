@@ -16,7 +16,7 @@ window.onload = function(){
 	  
 	  for (var i = 0; i < str.length; i++) 
 	  {
-	  	if (minarray[i] === minarray[i].toUpperCase())
+		if (minarray[i] === minarray[i].toUpperCase())
 	  	{
 	  		minarray[i] = minarray[i].toLowerCase();
 	  	}
@@ -25,17 +25,15 @@ window.onload = function(){
 	  		minarray[i] = minarray[i].toUpperCase();
 	  	}
 	  }
-		
-
+	  
+	  
 		
 		str = minarray.toString();
 		str = str.split(/,/).join("");
-		str = str.split(/[aA]/).join("#");
+	    str = str.split(/[aA]/).join("#");
 		return str;
 		
-		
-		
-		
+
 		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
