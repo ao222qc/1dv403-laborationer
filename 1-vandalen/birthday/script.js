@@ -16,13 +16,15 @@ window.onload = function(){
 	console.log(difference);
 	
 	var dayDifference = (difference / (1000*60*60*24));  
+	
+	dayDifference = dayDifference % 365;
 		
 	if (dayDifference < 0)
 	{
 		dayDifference = Math.floor(dayDifference);
 		return Math.abs(dayDifference);
 	}
-	if (dayDifference > 1)
+	else if (dayDifference > 1)
 	{
 		dayDifference -= 365;
 		dayDifference = Math.floor(dayDifference);
