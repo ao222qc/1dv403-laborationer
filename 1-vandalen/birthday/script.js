@@ -5,44 +5,46 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-	var nowDate = new Date();	
+	var nowDate = new Date();
+	var nowYear = nowDate.getFullYear();
+ 
 	
-	date = date.split("-").join(",");
+	var userBirthday = new Date(date);
+
+	var userDay = userBirthday.getDate();
+	var userMonth = userBirthday.getMonth();
+	var userYear = userBirthday.getFullYear();
 	
-	var userDate = new Date(date);
 	
-	var difference = nowDate.getTime() - userDate.getTime();
-	
-	console.log(difference);
-	
-	var dayDifference = (difference / (1000*60*60*24));  
-	
-	dayDifference = dayDifference % 365;
-		
-	if (dayDifference < 0)
+	if (userMonth == nowDate.getMonth() && userDay < nowDate.getDate())
 	{
-		dayDifference = Math.floor(dayDifference);
-		return Math.abs(dayDifference);
+		console.log("Redan fyllt år!");
+		userYear = nowYear+1;
 	}
-	else if (dayDifference > 1)
+	else if (userMonth < nowDate.getMonth())
 	{
-		dayDifference -= 365;
-		dayDifference = Math.floor(dayDifference);
-		return Math.abs(dayDifference);
+		console.log("Redan fyllt år!");
+		userYear = nowYear+1;
 	}
 	else
 	{
-		return Math.floor(dayDifference);
+		userYear = nowYear;
 	}
 	
-
+	var birthdayDate = new Date(userYear, userMonth, userDay);
+	console.log(birthdayDate);
 	
+	var difference = nowDate.getTime() - birthdayDate.getTime();
+	
+	var dayDifference = (difference / (1000*60*60*24)); 
+	
+	return Math.abs(Math.floor(dayDifference));
 
+  
+	
+	
 	
 			// Din kod här.
-
-
-
 
 	};
 	// ------------------------------------------------------------------------------
