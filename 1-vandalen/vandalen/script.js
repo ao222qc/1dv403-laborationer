@@ -11,11 +11,11 @@ var makePerson = function(persArr){
     var nameArray = [];
     var ageArray = [];
     
-    var ageSum = 0;
+    var ageSum = 0; //Variabel för att räkna ihop totalåldern som plussas i forloopen nedan.
     
     for (var i = 0; i < persArr.length; i++) 
     {
-        ageArray[i] = persArr[i].age;
+        ageArray[i] = persArr[i].age; //index i min egna array är lika med indexen i objecten som skickas in (age)
         ageSum = ageSum + ageArray[i];
     }
     
@@ -23,34 +23,30 @@ var makePerson = function(persArr){
     {
         nameArray[i] = persArr[i].name;  
     }  
+
+    nameArray.sort(function(a,b)
+    {
+        return a.localeCompare(b);
+    });
     
-    nameArray.sort();
+    //Hittade lösning hur man sorterar även ÅÄÖ via denna länk. nameArray.sort(); löste inte den biten för mig.        
+    //http://stackoverflow.com/questions/14677060/400x-sorting-speedup-by-switching-a-localecompareb-to-ab-1ab10
+    
+ 
     names = nameArray.toString();
-    names = names.split(",").join(", ");
+    names = names.split(",").join(", "); //Lägger till ett mellanrum efter kommatecknet då det såg hoptryckt ut.
     
     
-    minAge = Math.min.apply(Math, ageArray);
+    minAge = Math.min.apply(Math, ageArray); 
     maxAge = Math.max.apply(Math, ageArray);
 
-    averageAge = ageSum / ageArray.length;
+    averageAge = ageSum / ageArray.length; //Average är samma som totala åldrarna delat på antal åldrar.
     
-    averageAge = Math.round(averageAge);
+    averageAge = Math.round(averageAge); //Avrundning av medelåldern.
     
     result = {minAge: minAge, maxAge: maxAge, averageAge: averageAge, names: names};
     
-    
-  return result;
-  
-    
-   
-    
-    
-    
-    
-    
-    
-    
-
+    return result;
 
 	// Din kod här...
 
