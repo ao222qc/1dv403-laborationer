@@ -26,7 +26,7 @@ var makePerson = function(persArr){
 
     nameArray.sort(function(a,b)
     {
-        return a.localeCompare(b);
+        return a.localeCompare(b, 'sv');
     });
     
     //Hittade lösning hur man sorterar även ÅÄÖ via denna länk. nameArray.sort(); löste inte den biten för mig.        

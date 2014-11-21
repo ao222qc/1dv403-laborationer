@@ -1,0 +1,39 @@
+main
+{
+    background-color: Gray;
+    width:50%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+
+#textarea
+{
+    margin-left:45px;
+}
+header
+{
+    font-size:150%;
+    font-weight:bold;
+    text-align:center;
+}
+#messagearea
+{
+    display:flex;
+    flex-direction:column-reverse;
+    font-size:120%;
+    background-color: #D0D0D0; 
+    border-style:solid;
+    border-width:1px;
+    word-break:break-all;
+    overflow-y:scroll;
+    max-height:600px;
+}
+#messagearea p
+{
+     padding:10px 10px 10px;
+     min-height:50px;
+     
+}
