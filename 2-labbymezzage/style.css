@@ -30,10 +30,13 @@ header
     word-break:break-all;
     overflow-y:scroll;
     max-height:600px;
+    float:left;
+    min-width:100%;
 }
 #messagearea p
 {
-     padding:10px 10px 10px;
-     min-height:50px;
+    
+     
+     
      
 }

@@ -24,6 +24,23 @@ Message.prototype.getHTMLText = function(){
     
 };
 Message.prototype.getDateText = function(){
+
+        var Hour = this.getDate().getHours();
+var Minutes = this.getDate().getMinutes();
+var Seconds = this.getDate().getSeconds();
+if (Minutes < 10)
+{
+Minutes = "0"+Minutes; 
+}
+if (Seconds < 10)
+{
+Seconds = "0"+Seconds; 
+}
+
+return +Hour+":"+Minutes+":"+Seconds;
+
+
+
     
 };
 
