@@ -1,12 +1,22 @@
 main
 {
-    background-color: Gray;
+    background-color: #2F4F4F;
     width:50%;
     display:block;
     margin-left:auto;
     margin-right:auto;
 }
-
+body
+{
+    background-image: url("background.jpg");
+    background-size:100% 1500px;
+    background-repeat:no-repeat;
+}
+header
+{
+    color:Red;
+    font-weight:bold;
+}
 
 
 #textarea
@@ -24,7 +34,7 @@ header
     display:flex;
     flex-direction:column-reverse;
     font-size:120%;
-    background-color: #D0D0D0; 
+    background-color: #87CEEB; 
     border-style:solid;
     border-width:1px;
     word-break:break-all;
@@ -32,11 +42,36 @@ header
     max-height:600px;
     float:left;
     min-width:100%;
+    min-height:100px;
+
 }
-#messagearea p
+p
 {
-    
-     
-     
-     
+    font-weight:normal;
+    font-size:50%;
+    text-align:right;
+}
+
+h7
+{
+    float:left;
+    position:relative;
+    bottom:45px;
+    left:5px;
+}
+
+#dustbin
+{
+    position:relative;
+    left:760px;
+    top:25px;
+    height:25px;
+    width:25px;
+}
+#clock
+{
+    position:relative;
+    left:790px;
+    height:25px;
+    width:25px;
 }
