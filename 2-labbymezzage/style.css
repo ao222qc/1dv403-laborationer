@@ -1,6 +1,6 @@
 main
 {
-    background-color: #2F4F4F;
+    background-color: #b3b3b3;
     width:50%;
     display:block;
     margin-left:auto;
@@ -14,14 +14,19 @@ body
 }
 header
 {
-    color:Red;
-    font-weight:bold;
+  background-image: url('labbymezzage.jpg');
+  background-repeat:no-repeat;
+    height:100px;
+    width:660px;
+    position:relative;
+    left:490px;
+    top:9px;
 }
-
 
 #textarea
 {
     margin-left:45px;
+    word-break:break-all;
 }
 header
 {
@@ -37,19 +42,19 @@ header
     background-color: #87CEEB; 
     border-style:solid;
     border-width:1px;
-    word-break:break-all;
+    word-break: break-all;
     overflow-y:scroll;
     max-height:600px;
     float:left;
     min-width:100%;
     min-height:100px;
-
 }
 p
 {
     font-weight:normal;
     font-size:50%;
     text-align:right;
+     margin:1%;
 }
 
 h7
@@ -65,13 +70,18 @@ h7
     position:relative;
     left:760px;
     top:25px;
-    height:25px;
-    width:25px;
+    min-height:25px;
+    min-width:25px;
+    max-height:25px;
+    max-width:25px;
 }
+
 #clock
 {
     position:relative;
     left:790px;
-    height:25px;
-    width:25px;
+    min-height:25px;
+    min-width:25px;
+    max-height:25px;
+    max-width:25px;
 }
