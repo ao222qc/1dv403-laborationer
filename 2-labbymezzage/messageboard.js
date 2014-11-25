@@ -26,9 +26,7 @@ var MessageBoard =
     
             document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: " + MessageBoard.amountOfMessages;
     
-    
             var input = MessageBoard.messages.length-1;
-    
     
             MessageBoard.renderMessage(input);
     
@@ -36,58 +34,61 @@ var MessageBoard =
     
         renderMessage:function(input)
         {
-        
+            var message = document.createElement("div");
+           
             var text = document.createElement("h7");
+            text.id = "text";
             text.innerHTML = MessageBoard.messages[input].getHTMLText();
-            messagearea.appendChild(text);
+            message.appendChild(text);
     
-            var time = document.createElement("p");
-            time.innerHTML = MessageBoard.messages[input].getDateText();
-            messagearea.appendChild(time);
-        
-            var clock = document.createElement('img');
+             var clock = document.createElement("img");
             clock.src = 'CLOCK.jpg';
             clock.id = 'clock';
-            messagearea.appendChild(clock);
+            message.appendChild(clock);
         
-            var dustbin = document.createElement('img');
+            var dustbin = document.createElement("img");
             dustbin.src = 'dustbin.jpg';
             dustbin.id = 'dustbin';
-            messagearea.appendChild(dustbin);
+            message.appendChild(dustbin);
+    
+            var time = document.createElement("p");
+            time.id = "time";
+            time.innerHTML = MessageBoard.messages[input].getDateText();
+            message.appendChild(time);
+        
+            messagearea.appendChild(message);
         
         
-        
-            dustbin.onclick = function(e)
+            dustbin.onclick = function()
             {
                  if (confirm("Är du säker på att du vill radera meddelandet?"))
                 {
-                MessageBoard.numberOfMessages = MessageBoard.numberOfMessages -1;
-                text.parentNode.removeChild(text);
-                clock.parentNode.removeChild(clock);
-                dustbin.parentNode.removeChild(dustbin);
-                time.parentNode.removeChild(time);
-                MessageBoard.amountOfMessages -= 1;
-                document.getElementById("numberOfMessages").innerHTML = "Antal meddelanden: " + MessageBoard.amountOfMessages;
+                    text.parentNode.removeChild(text);
+                    clock.parentNode.removeChild(clock);
+                    dustbin.parentNode.removeChild(dustbin);
+                    time.parentNode.removeChild(time);
+                    MessageBoard.messages.splice(input, 1);
+                    document.getElementById("numberOfMessages").innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
+                    document.getElemenyById('messagearea').innerHTML = "";
+                    MessageBoard.renderMessages();
                 }
             },
        
             clock.onclick = function(e)
             {
-                 alert(MessageBoard.messages[input].getDate());
+                 alert(MessageBoard.messages[input].getFormattedDate());
             };
-       
-       
+      
         },
         
-
-    /*renderMessages:function()
+    renderMessages:function()
     {
         for (var i = 0; i > MessageBoard.messages.length; i++) 
         {
          MessageBoard.renderMessage(i);
         }
         
-    },*/
+    },
     
 };
 
