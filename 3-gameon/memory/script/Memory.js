@@ -10,7 +10,7 @@ var Memory =
   createGame:function()
   {   
     var board = [];
-    board =  RandomGenerator.getPictureArray(4,2);
+    board =  RandomGenerator.getPictureArray(4,4);
     Memory.displayGame(board);
 
    
@@ -19,21 +19,20 @@ var Memory =
   displayGame:function(board)
   {
     var memoryT = document.getElementById("memoryTable");
+    var tile = document.createElement("div");
+    tile.id = "tile";
      
-    var imageArray = ["../pics/0.png","../pics/0.png","../pics/1.png","../pics/1.png","../pics/2.png","../pics/2.png","../pics/3.png","../pics/3.png"];
+    var imageArray = ["../pics/0.png","../pics/1.png","../pics/2.png","../pics/3.png","../pics/4.png","../pics/5.png","../pics/6.png", "../pics/7.png", "../pics/8.png"];
+    //var bla = document.createElement("img");
     
-    for (var i = 0; i <= board.length; i++)
+    for (var i = 0; i < board.length; i++)
     {
-       board[i] = imageArray[i];
-       
-       var bla = document.createElement("img");
-       bla.src = board[i];
-       memoryT.appendChild(bla);
+       var image = document.createElement("img");
+       image.src = imageArray[board[i]];
+       tile.appendChild(image);
     }
-   var bla = document.createElement("img");
-   bla.src = imageArray[0];
-   memoryT.appendChild(bla);
     
+    memoryT.appendChild(tile);
   }
   
   

@@ -1,0 +1,20 @@
+#memoryTable
+{
+	background:#CCC;
+	border:#999 1px solid;
+	width:250px;
+	height:250px;
+	padding:24px;
+	margin:0px auto;
+}
+
+img
+{
+    height:60px;
+    width:60px;
+    padding:1px 1px 1px 1px;
+}
+#tile
+{
+    float:left;
+}
