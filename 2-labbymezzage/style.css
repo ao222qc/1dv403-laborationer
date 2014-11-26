@@ -44,10 +44,10 @@ header
     word-break: break-all;
     overflow-y:scroll;
     word-wrap:break-word;
-    max-height:100%;
     max-width:834px;
     min-width:100%;
     min-height:100px;
+    max-height:600px;
 
 }
 
@@ -86,5 +86,4 @@ header
     background-color:#008B8B;
     word-break:break-all;
     max-height:100%;
-    
 }

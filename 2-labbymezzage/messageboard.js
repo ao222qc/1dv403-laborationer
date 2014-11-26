@@ -34,6 +34,8 @@ var MessageBoard =
     
         renderMessage:function(input)
         {
+            var messagearea = document.getElementById("messagearea");
+            
             var message = document.createElement("div");
            
             var text = document.createElement("h7");
@@ -63,13 +65,9 @@ var MessageBoard =
             {
                  if (confirm("Är du säker på att du vill radera meddelandet?"))
                 {
-                    text.parentNode.removeChild(text);
-                    clock.parentNode.removeChild(clock);
-                    dustbin.parentNode.removeChild(dustbin);
-                    time.parentNode.removeChild(time);
                     MessageBoard.messages.splice(input, 1);
-                    document.getElementById("numberOfMessages").innerHTML = "Antal meddelanden: " + MessageBoard.messages.length;
-                    document.getElemenyById('messagearea').innerHTML = "";
+                    MessageBoard.amountOfMessages -= 1;
+                    document.getElementById("numberOfMessages").innerHTML = "Antal Meddelanden: " + MessageBoard.amountOfMessages;
                     MessageBoard.renderMessages();
                 }
             },
@@ -83,13 +81,13 @@ var MessageBoard =
         
     renderMessages:function()
     {
-        for (var i = 0; i > MessageBoard.messages.length; i++) 
+        document.getElementById('messagearea').innerHTML = "";
+          
+        for (var i = 0; i <= MessageBoard.messages.length; i++) 
         {
-         MessageBoard.renderMessage(i);
+            MessageBoard.renderMessage(i);
         }
-        
     },
-    
 };
 
 window.onload = MessageBoard.init;
