@@ -1,10 +1,18 @@
+main
+{
+	
+}
+
 #memoryTable
 {
 	background:#CCC;
 	border:#999 1px solid;
 	width:250px;
-	height:250px;
-	padding:24px;
+	height:260px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
 	margin:0px auto;
 }
 
@@ -14,7 +22,9 @@ img
     width:60px;
     padding:1px 1px 1px 1px;
 }
-#tile
+#backtile
 {
-    float:left;
+	height:50px;
+	width:50px;
+	background-color:red;
 }

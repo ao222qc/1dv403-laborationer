@@ -2,6 +2,11 @@
 
 var Memory =
 {
+clickCount:0,
+tryCount:0,
+lastClicked:null,
+defaultImage:"../pics/0.png",
+
   init:function()
   {
       Memory.createGame();
@@ -10,33 +15,62 @@ var Memory =
   createGame:function()
   {   
     var board = [];
-    board =  RandomGenerator.getPictureArray(4,4);
-    Memory.displayGame(board);
-
-   
-  },
-  
-  displayGame:function(board)
-  {
+    board = RandomGenerator.getPictureArray(4,4);
+    
     var memoryT = document.getElementById("memoryTable");
-    var tile = document.createElement("div");
-    tile.id = "tile";
-     
-    var imageArray = ["../pics/0.png","../pics/1.png","../pics/2.png","../pics/3.png","../pics/4.png","../pics/5.png","../pics/6.png", "../pics/7.png", "../pics/8.png"];
-    //var bla = document.createElement("img");
+
+    var atag = document.createElement("a");
+    atag.href = "#href";
+    var image;
     
     for (var i = 0; i < board.length; i++)
     {
-       var image = document.createElement("img");
-       image.src = imageArray[board[i]];
-       tile.appendChild(image);
+       image = document.createElement("img");
+       image.src = Memory.defaultImage;
+       image.bool = false;
+       image.newImage = "../pics/"+board[i]+".png";
+       atag.appendChild(image);
+       image.addEventListener("click",Memory.memClick);
     }
+       memoryT.appendChild(atag);
+  },
+
+  memClick:function()
+{
+  Memory.tryCount += 1;
+  Memory.clickCount += 1;
+  this.src = this.newImage;
+  
+  if (Memory.clickCount == 2)
+  {
+    var self = this;
+    var last = Memory.lastClicked;
     
-    memoryT.appendChild(tile);
+    if (self.newImage === last.newImage)
+    {
+      var lastclick = last;
+      self.removeEventListener("click", Memory.memClick);
+      lastclick.removeEventListener("click", Memory.memClick);
+      self.onclick = null;
+      lastclick.onclick = null;
+    }
+      else
+    {
+       setTimeout(function()
+       {
+        last.src = Memory.defaultImage;
+        self.src = Memory.defaultImage;
+      
+      },1200);
+    }
+    Memory.clickCount = 0;
   }
   
+  Memory.lastClicked = this;
   
-    
+},
+
 };
 
 window.onload = Memory.init;
+
