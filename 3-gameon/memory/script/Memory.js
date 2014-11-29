@@ -40,11 +40,25 @@ defaultImage:"../pics/0.png",
   Memory.tryCount += 1;
   Memory.clickCount += 1;
   this.src = this.newImage;
+  this.bool = true;
   
+  if (this.bool === true)
+  {
+    self = this;
+    self.removeEventListener("click", Memory.memClick);
+    self.onclick = null;
+    
+  }
+ 
   if (Memory.clickCount == 2)
   {
     var self = this;
     var last = Memory.lastClicked;
+    
+    self.addEventListener("click", Memory.memClick);
+    self.onclick = true;
+    last.addEventListener("click", Memory.memClick);
+    last.onclick = true;
     
     if (self.newImage === last.newImage)
     {
