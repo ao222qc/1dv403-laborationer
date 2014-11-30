@@ -1,7 +1,4 @@
-main
-{
-	
-}
+
 
 #memoryTable
 {
@@ -14,6 +11,7 @@ main
 	padding-left:10px;
 	padding-right:10px;
 	margin:0px auto;
+	float:none;
 }
 
 img
@@ -27,4 +25,12 @@ img
 	height:50px;
 	width:50px;
 	background-color:red;
+}
+#resultDiv
+{
+	float:left;
+	background-color:Green;
+	font-size:150%;
+	font-weight:bold;
+	margin:0px auto;
 }

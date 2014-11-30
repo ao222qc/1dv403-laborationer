@@ -6,33 +6,35 @@ clickCount:0,
 tryCount:0,
 lastClicked:null,
 defaultImage:"../pics/0.png",
+board:RandomGenerator.getPictureArray(4,4),
+memoryT:document.getElementById("memoryTable"),
+atag:null,
+image:null,
 
-  init:function()
+  init:function() //Kallar på init windowonload, en onödig function men ser ju snygg ut iaf.
   {
       Memory.createGame();
   },
   
   createGame:function()
   {   
-    var board = [];
-    board = RandomGenerator.getPictureArray(4,4);
+    //Memory.atag.href = "#href";
     
-    var memoryT = document.getElementById("memoryTable");
-
-    var atag = document.createElement("a");
-    atag.href = "#href";
-    var image;
-    
-    for (var i = 0; i < board.length; i++)
+    for (var i = 0; i < Memory.board.length; i++)
     {
-       image = document.createElement("img");
-       image.src = Memory.defaultImage;
-       image.bool = false;
-       image.newImage = "../pics/"+board[i]+".png";
-       atag.appendChild(image);
-       image.addEventListener("click",Memory.memClick);
+       Memory.atag = document.createElement("a");
+       Memory.atag.href ="#href";
+       Memory.image = document.createElement("img");
+       Memory.image.src = Memory.defaultImage;
+       Memory.image.bool = false;
+       Memory.image.points = 0;
+       Memory.image.newImage = "../pics/"+Memory.board[i]+".png";
+       Memory.atag.appendChild(Memory.image);
+       Memory.image.addEventListener("click",Memory.memClick);
+       Memory.memoryT.appendChild(Memory.atag);
+
     }
-       memoryT.appendChild(atag);
+       
   },
 
   memClick:function()
@@ -44,10 +46,8 @@ defaultImage:"../pics/0.png",
   
   if (this.bool === true)
   {
-    self = this;
-    self.removeEventListener("click", Memory.memClick);
-    self.onclick = null;
-    
+    this.removeEventListener("click", Memory.memClick);
+    this.onclick = null;
   }
  
   if (Memory.clickCount == 2)
@@ -67,6 +67,16 @@ defaultImage:"../pics/0.png",
       lastclick.removeEventListener("click", Memory.memClick);
       self.onclick = null;
       lastclick.onclick = null;
+      Memory.image.points++;
+      
+      if(Memory.image.points == 8)
+      {
+        var resultPost = document.getElementById("resultDiv");
+        
+        resultPost.innerHTML = ("Grattis! Det tog dig "+Memory.tryCount+" klick att klara av det!");
+        
+        
+      }
     }
       else
     {
@@ -75,15 +85,12 @@ defaultImage:"../pics/0.png",
         last.src = Memory.defaultImage;
         self.src = Memory.defaultImage;
       
-      },1200);
+      },1000);
     }
     Memory.clickCount = 0;
   }
-  
   Memory.lastClicked = this;
-  
 },
-
 };
 
 window.onload = Memory.init;
