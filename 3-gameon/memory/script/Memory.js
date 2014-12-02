@@ -26,9 +26,7 @@ image:null,
        Memory.image.bool = false;
        Memory.image.points = 0;
        Memory.image.newImage = "../pics/"+Memory.board[i]+".png";
-       Memory.atag.addEventListener("click", function(e){
-         Memory.memClick(e);
-       });
+       Memory.atag.addEventListener("click", Memory.memClick);
        
        Memory.atag.appendChild(Memory.image);
        Memory.memoryT.appendChild(Memory.atag);
@@ -36,13 +34,20 @@ image:null,
   },
   memClick:function(e){
     var image;
-  if(this == e.target){
+//console.log(this);
+
+  if(this == e.target)
+  { 
     image = e.target.childNodes[0];
   }
-  else{
+  else
+  {
     image = e.target;
   }
+  console.log(e.target);
+  //image = e.currentTarget.childNodes[0];
   
+  //console.log(image);
   Memory.tryCount += 1;
   Memory.clickCount += 1;
   image.src = image.newImage;
@@ -50,25 +55,25 @@ image:null,
   
   if (image.bool === true)
   {
-    image.removeEventListener("click", Memory.memClick);
-    this.onclick = null;
+    e.currentTarget.removeEventListener("click", Memory.memClick);
+    e.currentTarget.onclick = false;
   }
  
   if (Memory.clickCount == 2)
   {
-    var self = this;
+    var self = image;
     var last = Memory.lastClicked;
     
-    self.addEventListener("click", Memory.memClick);
-    self.onclick = true;
-    last.addEventListener("click", Memory.memClick);
-    last.onclick = true;
+    last.parentNode.addEventListener("click", Memory.memClick);
+    last.parentNode.onclick = true;
+    e.currentTarget.addEventListener("click", Memory.memClick);
+    e.currentTarget.onclick = true;
     
     if (self.newImage === last.newImage)
     {
       var lastclick = last;
-      self.removeEventListener("click", Memory.memClick);
-      lastclick.removeEventListener("click", Memory.memClick);
+      self.parentNode.removeEventListener("click", Memory.memClick);
+      lastclick.parentNode.removeEventListener("click", Memory.memClick);
       self.onclick = null;
       lastclick.onclick = null;
       Memory.image.points++;
@@ -91,7 +96,7 @@ image:null,
     }
     Memory.clickCount = 0;
   }
-  Memory.lastClicked = this;
+  Memory.lastClicked = image;
 },
 
 };
