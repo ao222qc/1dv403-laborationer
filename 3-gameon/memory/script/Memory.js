@@ -11,15 +11,12 @@ memoryT:document.getElementById("memoryTable"),
 atag:null,
 image:null,
 
-  init:function() //Kallar på init windowonload, en onödig function men ser ju snygg ut iaf.
+  init:function() 
   {
       Memory.createGame();
   },
-  
   createGame:function()
   {   
-    //Memory.atag.href = "#href";
-    
     for (var i = 0; i < Memory.board.length; i++)
     {
        Memory.atag = document.createElement("a");
@@ -29,24 +26,31 @@ image:null,
        Memory.image.bool = false;
        Memory.image.points = 0;
        Memory.image.newImage = "../pics/"+Memory.board[i]+".png";
-       Memory.atag.appendChild(Memory.image);
-       Memory.image.addEventListener("click",Memory.memClick);
-       Memory.memoryT.appendChild(Memory.atag);
-
-    }
+       Memory.atag.addEventListener("click", function(e){
+         Memory.memClick(e);
+       });
        
+       Memory.atag.appendChild(Memory.image);
+       Memory.memoryT.appendChild(Memory.atag);
+    }
   },
-
-  memClick:function()
-{
+  memClick:function(e){
+    var image;
+  if(this == e.target){
+    image = e.target.childNodes[0];
+  }
+  else{
+    image = e.target;
+  }
+  
   Memory.tryCount += 1;
   Memory.clickCount += 1;
-  this.src = this.newImage;
-  this.bool = true;
+  image.src = image.newImage;
+  image.bool = true;
   
-  if (this.bool === true)
+  if (image.bool === true)
   {
-    this.removeEventListener("click", Memory.memClick);
+    image.removeEventListener("click", Memory.memClick);
     this.onclick = null;
   }
  
@@ -74,8 +78,6 @@ image:null,
         var resultPost = document.getElementById("resultDiv");
         
         resultPost.innerHTML = ("Grattis! Det tog dig "+Memory.tryCount+" klick att klara av det!");
-        
-        
       }
     }
       else
@@ -85,12 +87,13 @@ image:null,
         last.src = Memory.defaultImage;
         self.src = Memory.defaultImage;
       
-      },1000);
+      },800);
     }
     Memory.clickCount = 0;
   }
   Memory.lastClicked = this;
 },
+
 };
 
 window.onload = Memory.init;
