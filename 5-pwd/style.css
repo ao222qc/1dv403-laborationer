@@ -1,0 +1,61 @@
+body
+{
+    width:1024px;
+    height:640px;
+}
+
+#background
+{
+    width:1024px;
+    height:640px;
+    background-color:deepskyblue;
+
+}
+.background-change
+{
+
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+    -moz-transition: opacity 1.5s ease-in-out;
+    -webkit-transition: opacity 1.5s ease-in-out;
+    width:1024px;
+    height:640px;
+    background-color:deepskyblue;
+}
+#icon
+{
+    height:50px;
+    width:50px;
+    background-color:red;
+}
+#icon:hover
+{
+    background-color:darkred;
+    height:60px;
+    width:60px;
+}
+
+#window
+{
+    height:400px;
+    width:300px;
+    background-color:red;
+    position:fixed;
+    top:75px;
+    overflow: scroll;
+}
+#thumbnail
+{
+
+}
+#container
+{
+    display: inline-block;
+    height:50px;
+
+    width:75px;
+    margin:7px 7px 7px 7px;
+    background-color:blue;
+
+
+}
