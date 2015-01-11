@@ -7,7 +7,8 @@ var pwd =
 {
     initialize:0,
     window:0,
-    loadAnimation:null,
+    statusbar:null,
+    border:null,
 
     init:function()
     {
@@ -24,12 +25,11 @@ var pwd =
         bar.id="menubar";
         icon = document.createElement("img");
         icon.id = "icon";
-        //icon.src = ""
+        icon.src = "folder.png";
         bar.appendChild(icon);
         pwd.initialize.appendChild(bar);
 
         icon.addEventListener("click", pwd.renderWindow);
-
     },
 
     renderWindow:function()
@@ -37,13 +37,17 @@ var pwd =
         var lastButton;
         var request;
         var closeIcon;
-        var border;
 
         lastButton = this;
         lastButton.removeEventListener("click", pwd.renderWindow);
 
-        border = document.createElement("div");
-        border.id = "border";
+        pwd.border = document.createElement("div");
+        pwd.border.id = "border";
+        pwd.border.innerHTML = "Image Viewer";
+
+        pwd.statusbar = document.createElement("img");
+        pwd.statusbar.id = "statusbar";
+        pwd.statusbar.src = ("ajax-loader.gif");
 
         pwd.window = document.createElement("div");
         pwd.window.id = "window";
@@ -51,19 +55,15 @@ var pwd =
         closeIcon = document.createElement("img");
         closeIcon.id="closeIcon";
 
-        pwd.loadAnimation = document.createElement("img");
-        pwd.loadAnimation.id = "gif";
-        pwd.loadAnimation.src = ("ajax-loader.gif");
+        pwd.border.appendChild(pwd.statusbar);
+        pwd.border.appendChild(pwd.window);
+        pwd.border.appendChild(closeIcon);
 
-        pwd.window.appendChild(pwd.loadAnimation);
-
-        border.appendChild(pwd.window);
-        border.appendChild(closeIcon);
-        pwd.initialize.appendChild(border);
+        pwd.initialize.appendChild(pwd.border);
 
         closeIcon.onclick = function ()
         {
-            pwd.initialize.removeChild(border);
+            pwd.initialize.removeChild(pwd.border);
             lastButton.addEventListener("click", pwd.renderWindow);
         };
 
@@ -84,7 +84,7 @@ var pwd =
         {
             if (request.readyState === 4 && request.status === 200)
             {
-                pwd.window.removeChild(pwd.loadAnimation);
+                pwd.border.removeChild(pwd.statusbar);
 
                 response = JSON.parse(request.responseText);
 
@@ -111,8 +111,6 @@ var pwd =
                     container.appendChild(atag);
                     pwd.window.appendChild(container);
                 }
-
-
             }
         }
     },
@@ -137,7 +135,7 @@ var pwd =
         var widthArray = [];
         var heightArray = [];
         var resultArray = [];
-        for (i = 0; i < arrayOfObjects.length; i++)
+        for (i = 0; i < arrayOfObjects.length; i+=1)
         {
             widthArray[i] = arrayOfObjects[i].thumbWidth;
             heightArray[i] =  arrayOfObjects[i].thumbHeight;
@@ -150,5 +148,4 @@ var pwd =
 
 };
 window.onload = pwd.init;
-
 

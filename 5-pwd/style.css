@@ -3,23 +3,23 @@
 {
     width:1024px;
     height:640px;
-    background-color:navajowhite;
     position:relative;
     margin-left:auto;
     margin-right:auto;
+    background-image: url("wallpaper.jpg");
+
 }
 #window
 {
     height:400px;
     width:299px;
-    background-color:lightblue;
+    background-color:navajowhite;
     position:fixed;
     top:105px;
-    overflow: scroll;
+    overflow-y: scroll;
     margin: 0 auto;
     padding-left:2px;
     padding-right:2px;
-    padding-bottom:5px;
 }
 #container
 {
@@ -28,7 +28,7 @@
     margin-right:2px;
     margin-top:2px;
     margin-bottom:2px;
-    background-color:indianred;
+    background-color:rosybrown;
     padding:5px 5px 5px 5px;
     border:1px;
     border-radius: 4px;
@@ -37,22 +37,42 @@
 {
     height:20px;
     width:20px;
-    background-color:black;
+    background-image: url("close.png");
+    background-size: 22px 22px;
+    background-repeat:no-repeat;
+
+
     float:right;
 }
 #border
 {
-    height:470px;
-    width:310px;
-    background-color:dodgerblue;
+    height:490px;
+    width:305px;
+    background-color:darksalmon;
     position:absolute;
-    top:45px;
+    top:39px;
     left:10px;
     padding-right:2px;
     padding-left:2px;
     border:1px;
     border-radius: 4px;
+    background-image: url("folder.png");
+    background-size: 25px 25px;
+    background-repeat:no-repeat;
+    text-align:center;
+    float:left;
+    line-height:2.5;
 }
+#statusbar
+{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:30px;
+    height:31px;
+    margin-left:2px;
+}
+
 #gif
 {
     margin-right:50%;
@@ -63,19 +83,20 @@
 {
     height:60px;
     width:1024px;
-    background-color:black;
     position:absolute;
     bottom:0;
+    border-top: 3px solid black;
+    background-color:lightsteelblue;
 }
 #icon
 {
+    margin-left:5px;
+    padding-bottom:5px;
     height:75%;
     width:50px;
-    background-color:red;
 }
 #icon:hover
 {
-    background-color:darkred;
     height:100%;
     width:60px;
 }
@@ -83,64 +104,4 @@
 {
     display:block;
     margin:0 auto;
-}body
-{
-    width:1024px;
-    height:640px;
-}
-
-#background
-{
-    width:1024px;
-    height:640px;
-    background-color:deepskyblue;
-
-}
-.background-change
-{
-
-    opacity: 1;
-    transition: opacity 1.5s ease-in-out;
-    -moz-transition: opacity 1.5s ease-in-out;
-    -webkit-transition: opacity 1.5s ease-in-out;
-    width:1024px;
-    height:640px;
-    background-color:deepskyblue;
-}
-#icon
-{
-    height:50px;
-    width:50px;
-    background-color:red;
-}
-#icon:hover
-{
-    background-color:darkred;
-    height:60px;
-    width:60px;
-}
-
-#window
-{
-    height:400px;
-    width:300px;
-    background-color:red;
-    position:fixed;
-    top:75px;
-    overflow: scroll;
-}
-#thumbnail
-{
-
-}
-#container
-{
-    display: inline-block;
-    height:50px;
-
-    width:75px;
-    margin:7px 7px 7px 7px;
-    background-color:blue;
-
-
 }
