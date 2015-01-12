@@ -19,7 +19,6 @@ var pwd =
     {
         var icon;
         var bar;
-
         pwd.initialize = document.getElementById("background");
         bar = document.createElement("div");
         bar.id="menubar";
@@ -28,7 +27,6 @@ var pwd =
         icon.src = "folder.png";
         bar.appendChild(icon);
         pwd.initialize.appendChild(bar);
-
         icon.addEventListener("click", pwd.renderWindow);
     },
 
